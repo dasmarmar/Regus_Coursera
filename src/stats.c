@@ -40,185 +40,177 @@ void main() {
                               201,   6,  12,  60,   8,   2,   5,  67,
                               7,  87, 250, 230,  99,   3, 100,  90};
 
-  /* Other Variable Declarations Go Here */
+/* Other Variable Declarations Go Here */
  
-  unsigned char maximum, minimum, mean, median; 
+unsigned char maximum, minimum, mean, median; 
  
-
-  /* Statistics and Printing Functions Go Here */
+/* Statistics and Printing Functions Go Here */
   
-  void sort_array(unsigned char *ptr, unsigned char length) {
+void sort_array(unsigned char *ptr, unsigned char length){
 
-	unsigned char temp;
+unsigned char temp;
 
-        for ( int i = 0; i < length; i++) {
+for(int i = 0; i < length; i++){
 
-	        for ( int j = i + 1; j < length; j++) {
+for(int j = i + 1; j < length; j++){
+		
+if(test[j] >= test[i]){
 
-		        if ( test[j] >= test[i] ) {
+temp = test[j];
+test[j] = test[i];
+test[i] = temp;}
+}
 
-			        temp = test[j];
-			        test[j] = test[i];
-			        test[i] = temp;
-			}
+}
 
-		}
+return;
 
-	}
-
-	return;
-
-  }
+}
   
-  unsigned char find_max(unsigned char *ptr, unsigned int length) {
+unsigned char find_max(unsigned char *ptr, unsigned int length){
 
-          unsigned char max = test[0];
+unsigned char max = test[0];
 
-	  for ( int i = 0; i < SIZE; i++ ) {
+for(int i = 0; i < SIZE; i++){
 
-		  if ( max >= test[i] ) {
+if(max >= test[i]){
 
-			  max = max;
+max = max;
+}
 
-		  }
+else{
 
-		  else {
+max = test[i];
+i = 0;
+}
 
-			  max = test[i];
-			  i = 0;
+}
 
-		  }
+return max;
 
-	  }
+}
 
-	  return max;
+unsigned find_min(unsigned char *ptr, unsigned int length){
 
-  }
+unsigned char min = test[0];
 
-  unsigned find_min(unsigned char *ptr, unsigned int length) {
+for(int i = 0; i < length; i++){
 
-	  unsigned char min = test[0];
+if(min <= test[i]){
 
-	  for ( int i = 0; i < length; i++ ) {
+min = min;
+}
 
-		  if ( min <= test[i] ) {
+else{
 
-			  min = min;
+min = test[i];
+i = 0;
+}
 
-		  }
+}
 
-		  else {
+return min;
 
-			  min = test[i];
-			  i = 0;
+}
 
-		  }
+unsigned char find_mean(unsigned char *ptr, unsigned int length){
 
-	  }
+unsigned int sum = 0;
 
-	  return min;
+for(int i = 0; i < length; i++){
 
-  }
+sum += test[i];
+}
 
-  unsigned char find_mean(unsigned char *ptr, unsigned int length) {
+mean = sum / length;
 
-	  unsigned int sum = 0;
+return mean;
 
-	  for ( int i = 0; i < length; i++ ) {
+}
 
-		  sum += test[i];
+unsigned char find_median(unsigned char *ptr, unsigned int length){
 
-	  }
+sort_array(test, length);
 
-	  mean = sum / length;
+unsigned char x, y;
 
-	  return mean;
+x = test[19];
+y = test[20];
 
-  }
+median = ( x + y ) / 2;
 
-  unsigned char find_median(unsigned char *ptr, unsigned int length) {
+return median;
 
-	  sort_array(test, length);
+}
 
-	  unsigned char x, y;
+void print_statistics(unsigned char min, unsigned char max, unsigned char mean, unsigned char median){
 
-	  x = test[19];
-	  y = test[20];
+printf("\n");
 
-	  median = ( x + y ) / 2;
+printf("The maximum value is: %3i\n", max);
+printf("\n");
+printf("The minimum value is: %3i\n", min);
+printf("\n");
+printf("The mean value is:    %3i\n", mean);
+printf("\n");
+printf("The median value is:  %3i\n", median);
 
-	  return median;
+printf("\n");
 
-  }
+return;
 
-  void print_statistics(unsigned char min, unsigned char max, unsigned char mean, unsigned char median) {
-
-	  printf("\n");
-
-	  printf("The maximum value is: %3i\n", max);
-	  printf("\n");
-	  printf("The minimum value is: %3i\n", min);
-	  printf("\n");
-	  printf("The mean value is:    %3i\n", mean);
-	  printf("\n");
-	  printf("The median value is:  %3i\n", median);
-
-	  printf("\n");
-
-	  return;
-
-  }
+}
 
 
-
- void print_array(unsigned char *ptr, unsigned int length) {
+void print_array(unsigned char *ptr, unsigned int length) {
          
-	 /*printf("\n");
-         printf("The values in the array are:\n");*/
-	 printf("\n");
-         printf("Index\tValue\tIndex\tValue\n");
-	 printf("\n");
+/*printf("\n");
+printf("The values in the array are:\n");*/
+printf("\n");
+printf("Index\tValue\tIndex\tValue\n");
+printf("\n");
 
-	 for (int i = 0; i < length / 2; i++) {
+for (int i = 0; i < length / 2; i++) {
                  
-		 for ( int j = i; j < length; j += 20) { 
+for ( int j = i; j < length; j += 20) { 
 	
-		 	printf("%3i\t%3i\t", j, test[j]);
-
-		 }
+printf("%3i\t%3i\t", j, test[j]);
+}
                  
-		 printf("\n");
-	 }
+printf("\n");
+}
 
-	 return;
+return;
 
- }
+}
+
 
 /* Add other Implementation File Code Here */
   
-  printf("\n");
-  printf("The unsorted values in the array are:\n");
+printf("\n");
+printf("The unsorted values in the array are:\n");
 
-  print_array(test, SIZE);
+print_array(test, SIZE);
 
-  maximum = find_max(test, SIZE);
+maximum = find_max(test, SIZE);
 
-  minimum = find_min(test, SIZE);
+minimum = find_min(test, SIZE);
 
-  mean = find_mean(test, SIZE);
+mean = find_mean(test, SIZE);
 
-  median = find_median(test, SIZE);
+median = find_median(test, SIZE);
 
-  printf("\n");
+printf("\n");
 
-  printf("The Sorted values in the array are: \n");
+printf("The Sorted values in the array are: \n");
 
-  sort_array(test, SIZE);
+sort_array(test, SIZE);
 
-  print_array(test, SIZE);
+print_array(test, SIZE);
 
-  print_statistics(minimum, maximum, mean, median);
+print_statistics(minimum, maximum, mean, median);
 
-  return;
+return;
 
 }
+

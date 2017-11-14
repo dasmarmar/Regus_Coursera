@@ -90,4 +90,96 @@ void set_all(char * ptr, char value, unsigned int size);
  */
 void clear_all(char * ptr, unsigned int size);
 
+/**
+ * @brief Move from the source location to the destination
+ *
+ * Takes two byte pointers (one source and one destination) and a length of
+ * bytes to move from the source location to the destination
+ *
+ * @param src 	 Pointer to source location byte
+ * @param dst 	 Pointer to destination byte
+ * @param length Size_of length of bytes
+ *
+ * @return Pointer to destination (dst)
+ */
+uint8_t * my_memmove(uint8_t * src, uint8_t * dst, size_t length);
+
+/**
+ * @brief Copy bytes in memory from the source location to the destination
+ *
+ * Takes two byte pointers (one source and one destination) and a length of bytes
+ * to copy from the source location to the destination
+ *
+ * @param src 	 Pointer to source location byte
+ * @param dst 	 Pointer to destination byte
+ * @param length Size_of length of bytes
+ *
+ * @return Pointer to destination (dst)
+ */
+uint8_t * my_memcopy(uint8_t * src, uint8_t * dst, size_t length);
+
+/**
+ * @brief Sets a memory location to a given value
+ *
+ * Takes a pointer to a source memory location, a length in bytes and sets all
+ * locations of that memory to a given value
+ *
+ * @param src 	 Pointer to source location byte
+ * @param length Size_of length of bytes to set
+ * @param value  Char value to set memory to
+ *
+ * @return Pointer to the source location (src)
+ */
+uint8_t * my_memset(uint8_t * src, size_t length, uint8_t value);
+
+/**
+ * @brief Zeroes out a memory location
+ *
+ * Takes a pointer to a memory location, a length in bytes and zeroes out all of
+ * the memory
+ *
+ * @param src 	 Pointer to source location byte
+ * @param length Size of length of bytes
+ *
+ * @return Pointer to the source location (src)
+ */
+uint8_t * my_memzero(uint8_t * src, size_t length);
+
+/**
+ * @brief Reverses the order of a length of bytes in a memory location
+ *
+ * Takes a pointer to a memory location and a length in bytes and reverses the
+ * order of all the bytes
+ *
+ * @param src 	 Pointer to source location byte
+ * @param length Size of length of bytes
+ *
+ * @return Pointer to the source locatin (src)
+ */
+uint8_t * my_reverse(uint8_t * src, size_t length);
+
+/**
+ * @brief Allocates space in memory for a given number of words
+ *
+ * Takes a number of words to allocate in dynamic memory
+ *
+ * @param length Number of words to allocate
+ *
+ * @return Pointer to memory location if successful, Null if not
+ */
+int32_t * reserve_words(size_t length);
+
+/**
+ * @brief Frees a dynamic memory allocation
+ *
+ * Frees a dynamic memory allocation by providing the pointer src to 
+ * the function
+ *
+ * @param src Pointer to source location
+ *
+ * @return void
+ */
+void free_words(int32_t * src);
+
+
 #endif /* __MEMORY_H__ */
